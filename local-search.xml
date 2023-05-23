@@ -5,8 +5,8 @@
   
   <entry>
     <title>IOS之Shadowrocket</title>
-    <link href="/2023/05/23/clashforshadowrocket/"/>
-    <url>/2023/05/23/clashforshadowrocket/</url>
+    <link href="/2023/05/23/iosforshadowrocket/"/>
+    <url>/2023/05/23/iosforshadowrocket/</url>
     
     <content type="html"><![CDATA[<h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Shadowrocket 是一款基于 iOS新特性的 Shadowsocks 客户端。它可以做到全局代理，也可以根据网站来进行分流。它可以满足你的绝大的需求！</p><span id="more"></span><h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul><li><p>1、下载 Shadowrocket （可以选择在线安装或者登陆美区港区苹果账号自行购买。因小火箭Shadowrocket在iOS国区里已经下架了，需要登录非国区ID才能下载，非常的麻烦。而且有些小白也会登录iCloud的，这样挺危险的.)</p></li><li><p>2、一个可用的 Shadowsocks 订阅链接</p></li></ul><p><img src="/../img/shadowrocket-1.jpg"></p><h1 id="如何订阅"><a href="#如何订阅" class="headerlink" title="如何订阅"></a>如何订阅</h1><p><img src="/../img/shadowrocket-2.jpg"></p><p><img src="/../img/shadowrocket-3.jpg"></p><h1 id="回到客户端首页"><a href="#回到客户端首页" class="headerlink" title="回到客户端首页"></a>回到客户端首页</h1><p>可以看到客户端已经自动下载好所有节点及相关信息。<br><img src="/../img/shadowrocket-6.jpg"></p><h1 id="增强体验"><a href="#增强体验" class="headerlink" title="增强体验"></a>增强体验</h1><p>按照下图将订阅设置项的“打开时更新”和“自动后台更新”选项同时开启。</p><p><img src="/../img/shadowrocket-7.jpg"></p><h1 id="知识了解（普通用户略过）"><a href="#知识了解（普通用户略过）" class="headerlink" title="知识了解（普通用户略过）"></a>知识了解（普通用户略过）</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs">“配置”为配置文件代理（即按照规则自动分流）<br>“代理”为全局代理（即所有连接均通过代理）<br>“直连”为绕过代理（即所有连接均不通过代理）<br>“场景”适用于不同网络环境下自动切换代理模式<br><br>非高级用户推荐使用默认的“配置”模式进行自动分流。<br></code></pre></td></tr></table></figure>]]></content>
     
