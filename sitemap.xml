@@ -2,6 +2,15 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   
   <url>
+    <loc>https://www.limitgo.win/2023/05/23/clashforshadowrocket/</loc>
+    
+    <lastmod>2023-05-23</lastmod>
+    
+    <changefreq>monthly</changefreq>
+    <priority>0.6</priority>
+  </url>
+  
+  <url>
     <loc>https://www.limitgo.win/2023/05/22/clashforandroid/</loc>
     
     <lastmod>2023-05-21</lastmod>
@@ -58,7 +67,7 @@
 
   <url>
     <loc>https://www.limitgo.win/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>daily</changefreq>
     <priority>1.0</priority>
   </url>
@@ -66,28 +75,42 @@
   
   <url>
     <loc>https://www.limitgo.win/tags/clash/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.limitgo.win/tags/windows/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.limitgo.win/tags/essay/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.limitgo.win/tags/android/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.limitgo.win/tags/shadowrocket/</loc>
+    <lastmod>2023-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.limitgo.win/tags/ios/</loc>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
@@ -96,14 +119,21 @@
   
   <url>
     <loc>https://www.limitgo.win/categories/clash/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
   
   <url>
     <loc>https://www.limitgo.win/categories/essay/</loc>
-    <lastmod>2023-05-21</lastmod>
+    <lastmod>2023-05-23</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.2</priority>
+  </url>
+  
+  <url>
+    <loc>https://www.limitgo.win/categories/shadowrocket/</loc>
+    <lastmod>2023-05-23</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.2</priority>
   </url>
