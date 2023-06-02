@@ -16,27 +16,27 @@
   <meta name="author" content="Limit">
   <meta name="keywords" content="">
   
-    <meta name="description" content="前言Shadowrocket 是一款基于 iOS新特性的 Shadowsocks 客户端。它可以做到全局代理，也可以根据网站来进行分流。它可以满足你的绝大的需求！">
+    <meta name="description" content="前言由于家里有两条网络，但是NUC11 PHAi5只有一个2.5G单网卡和一个WIFI6的AX210无线网卡，两根网络只用一个就太浪费了，要物尽其用，开始倒腾。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="IOS之Shadowrocket">
-<meta property="og:url" content="https://www.limitgo.win/2023/05/23/iosforshadowrocket/index.html">
+<meta property="og:title" content="Proxmox 下使用WIFI AX210网卡">
+<meta property="og:url" content="https://www.limitgo.win/2023/06/03/pveax210/index.html">
 <meta property="og:site_name" content="Limit Blog">
-<meta property="og:description" content="前言Shadowrocket 是一款基于 iOS新特性的 Shadowsocks 客户端。它可以做到全局代理，也可以根据网站来进行分流。它可以满足你的绝大的需求！">
+<meta property="og:description" content="前言由于家里有两条网络，但是NUC11 PHAi5只有一个2.5G单网卡和一个WIFI6的AX210无线网卡，两根网络只用一个就太浪费了，要物尽其用，开始倒腾。">
 <meta property="og:locale" content="zh_CN">
-<meta property="og:image" content="https://www.limitgo.win/img/shadowrocket-1.jpg">
-<meta property="article:published_time" content="2023-05-23T08:21:46.580Z">
-<meta property="article:modified_time" content="2023-05-23T08:35:18.936Z">
+<meta property="og:image" content="https://www.limitgo.win/img/bg1.jpg">
+<meta property="article:published_time" content="2023-06-02T17:11:01.647Z">
+<meta property="article:modified_time" content="2023-06-02T18:02:03.191Z">
 <meta property="article:author" content="Limit">
-<meta property="article:tag" content="shadowrocket">
-<meta property="article:tag" content="ios">
+<meta property="article:tag" content="pve">
+<meta property="article:tag" content="wifi">
 <meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:image" content="https://www.limitgo.win/img/shadowrocket-1.jpg">
+<meta name="twitter:image" content="https://www.limitgo.win/img/bg1.jpg">
   
   
     <meta name="referrer" content="no-referrer-when-downgrade">
   
   
-  <title>IOS之Shadowrocket - Limit Blog</title>
+  <title>Proxmox 下使用WIFI AX210网卡 - Limit Blog</title>
 
   <link  rel="stylesheet" href="https://lib.baomitu.com/twitter-bootstrap/4.6.1/css/bootstrap.min.css" />
 
@@ -230,7 +230,7 @@
       <div class="banner-text text-center fade-in-up">
         <div class="h2">
           
-            <span id="subtitle" data-typed-text="IOS之Shadowrocket"></span>
+            <span id="subtitle" data-typed-text="Proxmox 下使用WIFI AX210网卡"></span>
           
         </div>
 
@@ -241,8 +241,8 @@
     
       <span class="post-meta">
         <i class="iconfont icon-date-fill" aria-hidden="true"></i>
-        <time datetime="2023-05-23 16:21" pubdate>
-          2023年5月23日 下午
+        <time datetime="2023-06-03 01:11" pubdate>
+          2023年6月3日 凌晨
         </time>
       </span>
     
@@ -253,7 +253,7 @@
       <span class="post-meta mr-2">
         <i class="iconfont icon-chart"></i>
         
-          423 字
+          1.3k 字
         
       </span>
     
@@ -264,7 +264,7 @@
         
         
         
-          4 分钟
+          11 分钟
         
       </span>
     
@@ -302,27 +302,54 @@
         <div id="board">
           <article class="post-content mx-auto">
             <!-- SEO header -->
-            <h1 style="display: none">IOS之Shadowrocket</h1>
+            <h1 style="display: none">Proxmox 下使用WIFI AX210网卡</h1>
             
             
               <div class="markdown-body">
                 
-                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>Shadowrocket 是一款基于 iOS新特性的 Shadowsocks 客户端。它可以做到全局代理，也可以根据网站来进行分流。它可以满足你的绝大的需求！</p>
+                <h1 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h1><p>由于家里有两条网络，但是NUC11 PHAi5只有一个2.5G单网卡和一个WIFI6的AX210无线网卡，两根网络只用一个就太浪费了，要物尽其用，开始倒腾。</p>
 <span id="more"></span>
 
-<h1 id="准备工作"><a href="#准备工作" class="headerlink" title="准备工作"></a>准备工作</h1><ul>
-<li><p>1、下载 Shadowrocket （可以选择在线安装或者登陆美区港区苹果账号自行购买。因小火箭Shadowrocket在iOS国区里已经下架了，需要登录非国区ID才能下载，非常的麻烦。而且有些小白也会登录iCloud的，这样挺危险的.)</p>
-</li>
-<li><p>2、一个可用的 Shadowsocks 订阅链接</p>
-</li>
+<h1 id="前提概要"><a href="#前提概要" class="headerlink" title="前提概要"></a>前提概要</h1><ul>
+<li>首先需要基础的Linux操作</li>
+<li>有两台不同的网络，但同一网络也能倒腾</li>
+<li>只针对无线网卡 AX210</li>
+<li>pve版本 Virtual Environment 7.3-3</li>
+<li>家里有一条1G的移动网络和一台100M的移动网络</li>
+<li>1G走的WIFI6的路由器下接网线到2.5G电口</li>
+<li>100M的WIFI5的网件路由器给无线网卡用</li>
+<li>两条网络不在一个网络接入点，所以同时出问题的概率挺低的</li>
+<li>同属移动网络，直接使用负载均衡策略和分流策略进行带宽高可用与网络叠加</li>
 </ul>
-<p><img src="/../img/shadowrocket-1.jpg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="如何订阅"><a href="#如何订阅" class="headerlink" title="如何订阅"></a>如何订阅</h1><p><img src="/../img/shadowrocket-2.jpg" srcset="/img/loading.gif" lazyload></p>
-<p><img src="/../img/shadowrocket-3.jpg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="回到客户端首页"><a href="#回到客户端首页" class="headerlink" title="回到客户端首页"></a>回到客户端首页</h1><p>可以看到客户端已经自动下载好所有节点及相关信息。<br><img src="/../img/shadowrocket-6.jpg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="增强体验"><a href="#增强体验" class="headerlink" title="增强体验"></a>增强体验</h1><p>按照下图将订阅设置项的“打开时更新”和“自动后台更新”选项同时开启。</p>
-<p><img src="/../img/shadowrocket-7.jpg" srcset="/img/loading.gif" lazyload></p>
-<h1 id="知识了解（普通用户略过）"><a href="#知识了解（普通用户略过）" class="headerlink" title="知识了解（普通用户略过）"></a>知识了解（普通用户略过）</h1><figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><code class="hljs">“配置”为配置文件代理（即按照规则自动分流）<br>“代理”为全局代理（即所有连接均通过代理）<br>“直连”为绕过代理（即所有连接均不通过代理）<br>“场景”适用于不同网络环境下自动切换代理模式<br><br>非高级用户推荐使用默认的“配置”模式进行自动分流。<br></code></pre></td></tr></table></figure>
+<h1 id="安装必要的软件"><a href="#安装必要的软件" class="headerlink" title="安装必要的软件"></a>安装必要的软件</h1><figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs routeros">apt-<span class="hljs-built_in">get</span> install wireless-tools wpasupplicant<br></code></pre></td></tr></table></figure>
+
+<p>安装完成后，即可自动发现对于的网卡</p>
+<p><img src="/../img/pveax210-1.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="编辑网卡文件-最终配置"><a href="#编辑网卡文件-最终配置" class="headerlink" title="编辑网卡文件(最终配置)"></a>编辑网卡文件(最终配置)</h1><ul>
+<li>vi &#x2F;etc&#x2F;network&#x2F;interfaces</li>
+</ul>
+<figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">auto</span> lo<br><span class="hljs-attribute">iface</span> lo inet loopback<br><br><span class="hljs-attribute">iface</span> enp88s0 inet manual<br><br><span class="hljs-attribute">auto</span> vmbr0<br><span class="hljs-attribute">iface</span> vmbr0 inet static<br>        <span class="hljs-attribute">address</span> <span class="hljs-number">192.168.31.200</span>/<span class="hljs-number">24</span><br>        <span class="hljs-attribute">gateway</span> <span class="hljs-number">192.168.31.1</span><br>        <span class="hljs-attribute">bridge</span>-ports enp88s0<br>        <span class="hljs-attribute">bridge</span>-stp <span class="hljs-literal">off</span><br>        <span class="hljs-attribute">bridge</span>-fd <span class="hljs-number">0</span><br><br><span class="hljs-attribute">auto</span> wlo1<br><span class="hljs-attribute">iface</span> wlo1 inet dhcp<br>        <span class="hljs-attribute">wpa</span>-ssid <span class="hljs-string">&quot;WIFI的名称&quot;</span><br>        <span class="hljs-attribute">wpa</span>-psk <span class="hljs-string">&quot;WIFI的密码&quot;</span><br><br><span class="hljs-attribute">auto</span> vmbr1<br><span class="hljs-attribute">iface</span> vmbr1 inet static<br>        <span class="hljs-attribute">address</span> <span class="hljs-number">10.10.10.254</span>/<span class="hljs-number">24</span><br>        <span class="hljs-attribute">bridge</span>-ports none<br>        <span class="hljs-attribute">bridge</span>-stp <span class="hljs-literal">off</span><br>        <span class="hljs-attribute">bridge</span>-fd <span class="hljs-number">0</span><br>        <span class="hljs-attribute">post</span>-up   echo <span class="hljs-number">1</span> &gt; /proc/sys/net/ipv4/ip_forward<br>        <span class="hljs-attribute">post</span>-up   iptables -t nat -A POSTROUTING -s &#x27;<span class="hljs-number">10.10.10.0</span>/<span class="hljs-number">24</span>&#x27; -o wlo1 -j MASQUERADE<br>        <span class="hljs-attribute">post</span>-down iptables -t nat -D POSTROUTING -s &#x27;<span class="hljs-number">10.10.10.0</span>/<span class="hljs-number">24</span>&#x27; -o wlo1 -j MASQUERADE<br></code></pre></td></tr></table></figure>
+
+<h1 id="重启机器或者重启网卡"><a href="#重启机器或者重启网卡" class="headerlink" title="重启机器或者重启网卡"></a>重启机器或者重启网卡</h1><h2 id="重启网卡"><a href="#重启网卡" class="headerlink" title="重启网卡"></a>重启网卡</h2><figure class="highlight nginx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><code class="hljs nginx"><span class="hljs-attribute">ifdown</span> wlo1<br>ifup wlo1<br></code></pre></td></tr></table></figure>
+
+<h2 id="重启机器-建议"><a href="#重启机器-建议" class="headerlink" title="重启机器(建议)"></a>重启机器(建议)</h2><figure class="highlight ebnf"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs ebnf"><span class="hljs-attribute">reboot</span><br></code></pre></td></tr></table></figure>
+
+<h1 id="查看WIFI是否获取到对应的IP"><a href="#查看WIFI是否获取到对应的IP" class="headerlink" title="查看WIFI是否获取到对应的IP"></a>查看WIFI是否获取到对应的IP</h1><p><img src="/../img/pveax210-2.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="配置路由"><a href="#配置路由" class="headerlink" title="配置路由"></a>配置路由</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">route</span> add -net <span class="hljs-number">0.0.0.0</span>/<span class="hljs-number">0</span> gw <span class="hljs-number">10.0.0.1</span> dev wlo1<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/pveax210-3.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="最后配置NAT"><a href="#最后配置NAT" class="headerlink" title="最后配置NAT"></a>最后配置NAT</h1><figure class="highlight apache"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><code class="hljs apache"><span class="hljs-attribute">iptables</span> -t nat -A POSTROUTING -s &#x27;<span class="hljs-number">10.10.10.0</span>/<span class="hljs-number">24</span>&#x27; -o wlo1 -j MASQUERADE<br></code></pre></td></tr></table></figure>
+
+<p><img src="/../img/pveax210-4.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="利用Ikuai进行分流"><a href="#利用Ikuai进行分流" class="headerlink" title="利用Ikuai进行分流"></a>利用Ikuai进行分流</h1><p><img src="/../img/pveax210-5.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/pveax210-6.png" srcset="/img/loading.gif" lazyload></p>
+<p><img src="/../img/pveax210-7.png" srcset="/img/loading.gif" lazyload></p>
+<h1 id="机器多出口在线测试，多出口即为成功"><a href="#机器多出口在线测试，多出口即为成功" class="headerlink" title="机器多出口在线测试，多出口即为成功"></a>机器多出口在线测试，多出口即为成功</h1><p><a target="_blank" rel="noopener" href="https://ip.skk.moe/">https://ip.skk.moe/</a><br><a target="_blank" rel="noopener" href="https://ip.skk.moe/multi">https://ip.skk.moe/multi</a></p>
+<h1 id="结语"><a href="#结语" class="headerlink" title="结语"></a>结语</h1><ul>
+<li>我的WAN2带魔法，出口会特别多，就不贴图了</li>
+<li>拔掉任意一个网络，另外一个可用网络就会接替断线网络。</li>
+</ul>
+
                 
               </div>
             
@@ -340,7 +367,7 @@
     
       <span class="category-chain">
         
-  <a href="/categories/shadowrocket/" class="category-chain-item">shadowrocket</a>
+  <a href="/categories/pve/" class="category-chain-item">pve</a>
   
   
 
@@ -355,9 +382,9 @@
     <div class="post-meta">
       <i class="iconfont icon-tags"></i>
       
-        <a href="/tags/shadowrocket/">#shadowrocket</a>
+        <a href="/tags/pve/">#pve</a>
       
-        <a href="/tags/ios/">#ios</a>
+        <a href="/tags/wifi/">#wifi</a>
       
     </div>
   
@@ -369,8 +396,8 @@
 
   <div class="license-box my-3">
     <div class="license-title">
-      <div>IOS之Shadowrocket</div>
-      <div>https://www.limitgo.win/2023/05/23/iosforshadowrocket/</div>
+      <div>Proxmox 下使用WIFI AX210网卡</div>
+      <div>https://www.limitgo.win/2023/06/03/pveax210/</div>
     </div>
     <div class="license-meta">
       
@@ -382,7 +409,7 @@
       
         <div class="license-meta-item license-meta-date">
           <div>发布于</div>
-          <div>2023年5月23日</div>
+          <div>2023年6月3日</div>
         </div>
       
       
@@ -414,18 +441,12 @@
                   <article class="post-prev col-6">
                     
                     
-                      <a href="/2023/06/03/pveax210/" title="Proxmox 下使用WIFI AX210网卡">
-                        <i class="iconfont icon-arrowleft"></i>
-                        <span class="hidden-mobile">Proxmox 下使用WIFI AX210网卡</span>
-                        <span class="visible-mobile">上一篇</span>
-                      </a>
-                    
                   </article>
                   <article class="post-next col-6">
                     
                     
-                      <a href="/2023/05/22/clashforandroid/" title="Clash系列之Clash For Android">
-                        <span class="hidden-mobile">Clash系列之Clash For Android</span>
+                      <a href="/2023/05/23/iosforshadowrocket/" title="IOS之Shadowrocket">
+                        <span class="hidden-mobile">IOS之Shadowrocket</span>
                         <span class="visible-mobile">下一篇</span>
                         <i class="iconfont icon-arrowright"></i>
                       </a>
@@ -448,7 +469,7 @@
         var options = Object.assign(
           {"clientID":"13ccb0e449114196f027","clientSecret":"74286de87b38cc5917ecb138cfba87bc92c38580","repo":"Gitalk","owner":"golimit","admin":["golimit"],"language":"zh-CN","labels":["Gitalk"],"perPage":10,"pagerDirection":"last","distractionFreeMode":false,"createIssueManually":true,"proxy":"https://cors-anywhere.azm.workers.dev/https://github.com/login/oauth/access_token"},
           {
-            id: 'e3d3882a2f6909fbe670824944753394'
+            id: '316bfaafe0f5aba6daf17cc3a68b0aef'
           }
         )
         var gitalk = new Gitalk(options);
